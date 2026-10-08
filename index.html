@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ── LAYOUT ── */
 .wrap{max-width:1100px;margin:0 auto;padding-inline:clamp(18px,5vw,48px);}
-section{padding:88px 0;}
+section{padding:48px 0;}
 
 /* ── LABEL ── */
 .label{display:inline-flex;align-items:center;gap:7px;font-size:.7rem;font-weight:700;
@@ -64,10 +64,12 @@ section{padding:88px 0;}
 .muted-p{color:var(--muted);font-size:.94rem;line-height:1.7;max-width:480px;}
 
 /* ── BTNS ── */
+@keyframes btnShake{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px);}75%{transform:translateX(3px);}}
 .btn-or{display:inline-flex;align-items:center;gap:8px;background:var(--or);color:#fff;
   font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:10px;
-  transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:var(--body);}
-.btn-or:hover{background:var(--or2);transform:translateY(-2px);}
+  transition:background .2s;cursor:pointer;border:none;font-family:var(--body);
+  animation:btnShake 1.4s ease-in-out infinite;}
+.btn-or:hover{background:var(--or2);animation:none;transform:translateY(-2px);}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;
   color:var(--text);font-weight:600;font-size:.88rem;padding:13px 26px;
   border-radius:10px;border:1px solid var(--border2);transition:border-color .2s,background .2s;}
@@ -83,8 +85,8 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{color:var(--muted);font-size:.84rem;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--white);}
-.nav-cta{background:var(--or);color:#fff;padding:9px 22px;border-radius:9px;font-size:.83rem;font-weight:700;transition:background .2s;}
-.nav-cta:hover{background:var(--or2);}
+.nav-cta{background:var(--or);color:#fff;padding:9px 22px;border-radius:9px;font-size:.83rem;font-weight:700;transition:background .2s;border:none;animation:btnShake 1.4s ease-in-out infinite;}
+.nav-cta:hover{background:var(--or2);animation:none;transform:translateY(-1px);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
 .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;}
 .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:var(--bg2);
@@ -94,7 +96,7 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 .mobile-menu a{color:var(--text);font-size:.95rem;font-weight:500;}
 
 /* ── HERO ── */
-#hero{padding:130px 0 80px;position:relative;overflow:hidden;}
+#hero{padding:110px 0 60px;position:relative;overflow:hidden;}
 .hero-bg-blob{position:absolute;width:900px;height:900px;border-radius:50%;
   background:radial-gradient(circle,var(--or-glow) 0%,transparent 65%);
   top:0;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
@@ -117,8 +119,8 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 .h-stat-num{font-family:var(--display);font-size:1.5rem;font-weight:800;color:var(--white);}
 .h-stat-lbl{font-size:.73rem;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.06em;}
 
-/* Hero YT */
-.hero-yt{width:100%;max-width:680px;margin-top:44px;border-radius:16px;overflow:hidden;
+/* Hero YT — landscape intro */
+.hero-yt{width:100%;max-width:680px;margin-top:28px;border-radius:16px;overflow:hidden;
   border:1px solid var(--border2);aspect-ratio:16/9;}
 .hero-yt iframe{width:100%;height:100%;border:none;display:block;}
 
@@ -160,7 +162,7 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 
 /* ── EXPERT ── */
 #expert{background:var(--bg);}
-.expert-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.expert-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .expert-img-col{position:relative;}
 .expert-img{border-radius:20px;width:100%;aspect-ratio:4/5;object-fit:cover;
   border:1px solid var(--border2);}
@@ -196,7 +198,7 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 #videos{background:var(--bg2);}
 .vid-intro{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:36px;}
 .vid-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto;}
-.vid-item{border-radius:14px;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--border);}
+.vid-item{border-radius:14px;overflow:hidden;aspect-ratio:9/16;border:1px solid var(--border);}
 .vid-item iframe{width:100%;height:100%;border:none;display:block;}
 .vid-note{text-align:center;margin-top:28px;font-size:.83rem;color:var(--muted);}
 
@@ -264,25 +266,47 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 .form-note{text-align:center;font-size:.77rem;color:var(--muted2);margin-top:12px;}
 
 /* ── FOOTER ── */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 28px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:44px;}
+.footer-cta-band{background:var(--or);padding:40px clamp(18px,5vw,48px);}
+.footer-cta-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.footer-cta-band h3{font-family:var(--display);font-size:clamp(1.45rem,3vw,2.1rem);font-weight:800;
+  color:#fff;letter-spacing:-.03em;line-height:1.15;max-width:580px;}
+.footer-cta-band h3 span{opacity:.75;font-size:85%;}
+.footer-cta-band a{flex-shrink:0;background:#fff;color:var(--or);padding:14px 30px;
+  border-radius:10px;font-weight:800;font-size:.92rem;transition:opacity .2s,transform .15s;white-space:nowrap;}
+.footer-cta-band a:hover{opacity:.92;transform:translateY(-2px);}
+
+footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:36px 0 0;}
+.footer-main{display:flex;align-items:flex-start;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.05);}
 .footer-brand-logo{font-family:var(--display);font-size:1.35rem;font-weight:800;
-  color:var(--white);margin-bottom:14px;}
+  color:var(--white);margin-bottom:10px;letter-spacing:-.02em;}
 .footer-brand-logo em{font-style:normal;color:var(--or);}
-.footer-brand p{font-size:.84rem;color:var(--muted);line-height:1.7;max-width:300px;}
-.footer-socials{display:flex;gap:10px;margin-top:18px;}
-.footer-socials a{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:border-color .2s;}
-.footer-socials a:hover{border-color:var(--or);}
-.footer-col h4{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted2);margin-bottom:16px;}
+.footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.65;max-width:240px;margin-bottom:18px;}
+.footer-brand-tag{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:18px;}
+.footer-brand-tag::before{content:'';width:18px;height:1px;background:var(--muted2);}
+.footer-socials{display:flex;gap:8px;}
+.footer-socials a{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:border-color .2s,background .2s;}
+.footer-socials a:hover{border-color:var(--or);background:var(--or-dim);}
+.footer-links{display:flex;gap:52px;flex-wrap:wrap;}
+.footer-col h4{font-size:.67rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#888;margin-bottom:16px;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.footer-col ul a{font-size:.85rem;color:var(--muted);transition:color .2s;}
+.footer-col ul a{font-size:.83rem;color:#aaa;transition:color .2s;}
 .footer-col ul a:hover{color:var(--white);}
-.footer-col p{font-size:.85rem;color:var(--muted);margin-bottom:8px;}
-.footer-bar{border-top:1px solid var(--border);padding-top:22px;display:flex;
-  justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-bar p{font-size:.78rem;color:var(--muted2);}
+.footer-col p{font-size:.83rem;color:#aaa;margin-bottom:8px;}
+.footer-col p a{color:#aaa;}
+.footer-col p a:hover{color:var(--white);}
+.footer-bar{padding:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bar p{font-size:.74rem;color:#888;}
+.footer-bar span{font-size:.74rem;color:var(--or);font-weight:600;letter-spacing:.04em;}
+@media(max-width:860px){
+  .footer-cta-band .wrap{flex-direction:column;text-align:center;}
+  .footer-main{flex-direction:column;gap:28px;}
+  .footer-links{gap:32px;}
+  .footer-bar{flex-direction:column;text-align:center;gap:6px;}
+}
 
 /* ── STICKY ── */
 .sticky-cta{position:fixed;bottom:-80px;left:0;right:0;z-index:990;
@@ -293,7 +317,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
 .sticky-cta-txt{font-size:.88rem;color:var(--muted);font-weight:500;}
 .sticky-cta-txt strong{color:var(--white);}
 .sticky-cta-btn{flex-shrink:0;background:var(--or);color:#fff;padding:10px 22px;
-  border-radius:9px;font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:7px;transition:background .2s;}
+  border-radius:9px;font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:7px;transition:background .2s;
+  animation:btnShake 1.4s ease-in-out infinite;}
+.sticky-cta-btn:hover{animation:none;}
 .sticky-cta-btn:hover{background:var(--or2);}
 
 .scroll-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;
@@ -339,14 +365,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
   .footer-bar{flex-direction:column;text-align:center;}
 }
 @media(max-width:580px){
-  section{padding:60px 0;}
+  section{padding:32px 0;}
   .results-grid{grid-template-columns:1fr;}
   .steps{grid-template-columns:1fr;}
-  .vid-grid{grid-template-columns:1fr;}
+  .vid-grid{grid-template-columns:1fr 1fr;gap:10px;}
   .hero-stats-row{flex-direction:column;border-radius:12px;}
   .h-stat{border-right:none;border-bottom:1px solid var(--border);}
   .h-stat:last-child{border-bottom:none;}
   .exp-stats{grid-template-columns:1fr 1fr;}
+  .hero-yt{max-width:100%;}
+  .for-grid{grid-template-columns:1fr;}
+  .faq-wrap{gap:32px;}
+  .hero-h1{font-size:clamp(1.8rem,7vw,2.6rem);}
+  .expert-wrap{gap:40px;}
+  .exp-badge{bottom:10px;right:10px;padding:12px 16px;}
+  .exp-badge strong{font-size:1.2rem;}
+  .modal-box{padding:24px 20px;}
+  .footer-grid{gap:24px;}
 }
 </style>
 </head>
@@ -361,7 +396,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
     <li><a href="#testimonials">Clients</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#getstart" class="nav-cta" onclick="openModal(event)">Get Started →</a>
+  <a href="#getstart" class="nav-cta" onclick="openModal(event)">Talk to Osama →</a>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -371,7 +406,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
   <a href="#videos" onclick="toggleMenu()">Results</a>
   <a href="#testimonials" onclick="toggleMenu()">Clients</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
-  <a href="#getstart" onclick="toggleMenu();openModal(event);" class="btn-or" style="width:fit-content;">Get Started →</a>
+  <a href="#getstart" onclick="toggleMenu();openModal(event);" class="btn-or" style="width:fit-content;">Talk to Osama →</a>
 </div>
 
 <!-- HERO -->
@@ -381,46 +416,31 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
     <div class="hero-inner">
       <div class="hero-pill">
         <span class="dot"></span>
-        700+ Affiliate Marketers Already Generating Daily Leads
+        Affiliate Marketer? We've got you covered.
       </div>
 
       <h1 class="hero-h1">
-        We Run Your Meta Ads &amp;<br>Get You <span class="or">More Leads</span><br>Every Single Day
+        Scale Your Affiliate Income to <span class="or">₹2 Lakh+ Per Month</span><br>— Without Organic Grind or Guesswork
       </h1>
 
-      <p class="hero-sub">
-        100% done-for-you Meta Ads management. You focus on closing — we handle everything from strategy to creatives to optimization.
-      </p>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">👇 Watch this full video before scrolling down</p>
+      <div class="hero-yt">
+        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="AdDestini Introduction" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      </div>
 
-      <div class="hero-btns">
+      <div class="hero-btns" style="margin-top:32px;">
         <a href="#getstart" class="btn-or" onclick="openModal(event)">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Start Getting Leads
+          Yes, I Want Ad Service
         </a>
         <a href="#videos" class="btn-ghost">See Client Results ↓</a>
       </div>
 
-      <div class="hero-stats-row">
-        <div class="h-stat">
-          <div class="h-stat-num"><span class="counter" data-target="700" data-suffix="+">700+</span></div>
-          <div class="h-stat-lbl">Affiliates Served</div>
-        </div>
-        <div class="h-stat">
-          <div class="h-stat-num"><span class="counter" data-target="3" data-suffix="+">3+</span></div>
-          <div class="h-stat-lbl">Years Experience</div>
-        </div>
-        <div class="h-stat">
-          <div class="h-stat-num"><span class="counter" data-target="50" data-suffix="+">50+</span></div>
-          <div class="h-stat-lbl">New Affiliates / Month</div>
-        </div>
-        <div class="h-stat">
-          <div class="h-stat-num"><span data-prefix="₹" class="counter" data-target="60" data-suffix="L+">₹60L+</span></div>
-          <div class="h-stat-lbl">Ad Spend Managed</div>
-        </div>
-      </div>
-
-      <div class="hero-yt">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="AdDestini Results" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-bottom:32px;max-width:420px;">
+        <span style="font-size:.85rem;color:var(--muted);"><strong style="color:var(--white);">700+</strong> Affiliates Served</span>
+        <span style="font-size:.85rem;color:var(--muted);"><strong style="color:var(--white);">3+</strong> Years Experience</span>
+        <span style="font-size:.85rem;color:var(--muted);"><strong style="color:var(--white);">₹60L+</strong> Ad Spend Managed</span>
+        <span style="font-size:.85rem;color:var(--muted);"><strong style="color:var(--white);">50+</strong> New Clients / Month</span>
       </div>
     </div>
   </div>
@@ -478,8 +498,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
 <section id="testimonials">
   <div class="wrap">
     <div class="testi-intro">
-      <h2 class="sh">Real WhatsApp Screenshots from <em>Real Clients</em></h2>
-      <p class="muted-p" style="margin:0 auto;">These are actual messages we received — unedited, unfiltered.</p>
+      <h2 class="sh">What Clients Say <em>After Working With Us</em></h2>
     </div>
   </div>
   <div class="testi-track-outer">
@@ -514,6 +533,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
   <div class="wrap">
     <div class="expert-wrap">
       <div class="expert-img-col">
+        <div style="position:absolute;top:18px;left:18px;z-index:2;">
+          <span class="label">Meet Your Expert</span>
+        </div>
         <img class="expert-img" src="https://i.ibb.co/j9pf0kd3/Osama-Professional.jpg" alt="Osama Irshad — Meta Ads Expert">
         <div class="exp-badge">
           <strong>3+</strong>
@@ -521,10 +543,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
         </div>
       </div>
       <div class="exp-content">
-        <span class="label">Meet Your Expert</span>
-        <h2>I'm <em>Osama Irshad</em> — and I've spent 3+ years running Meta Ads for affiliate marketers</h2>
-        <p class="muted-p">I've helped 700+ affiliate marketers across India generate consistent daily leads through Facebook & Instagram Ads. No theory, no fluff — just full campaign management so you can focus on what matters: closing sales.</p>
-        <p class="muted-p">I've personally managed ₹60L+ in ad spend across platforms like IDP, Bizgurukul, LeadsGuru, Forever, and more.</p>
+        <h2>I'm <em>Osama Irshad</em> — I've been in affiliate marketing long enough to know exactly why most affiliates struggle with ads</h2>
+        <p class="muted-p">Most affiliates start the same way — posting reels, sending DMs, buying random lead lists, trying to figure out ads alone. I've seen it hundreds of times. The hustle is real, but the system is broken. That's the problem I decided to fix.</p>
+        <p class="muted-p">Over the last 3+ years, I've built the actual infrastructure behind the results — offer positioning, conversion-focused funnels, retargeting systems that bring back warm leads, and Meta campaigns optimized week-on-week. Not just ads that run, but a full pipeline engineered to deliver consistent, qualified leads. I've done this for 700+ affiliates across IDP, Bizgurukul, LeadsGuru, TruLearnix, Forever, and more — managing ₹60L+ in ad spend personally.</p>
         <div class="exp-stats">
           <div class="e-stat">
             <div class="e-num"><span class="counter" data-target="700" data-suffix="+">700+</span></div>
@@ -543,7 +564,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
             <div class="e-lbl">Years Experience</div>
           </div>
         </div>
-        <a href="https://wa.me/918726658320" target="_blank" class="btn-wa" style="width:fit-content;">
+        <a href="https://wa.me/918726658320" target="_blank" class="btn-or" style="width:fit-content;">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat with Osama on WhatsApp
         </a>
@@ -552,36 +573,72 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
   </div>
 </section>
 
-<!-- FOR / NOT FOR -->
-<section id="for-section">
+<!-- WHY STUCK + FOR/NOT FOR (combined) -->
+<section id="why-stuck" style="background:var(--bg2);">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:48px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+    <div style="text-align:center;margin-bottom:32px;display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <span class="label">The Real Problem</span>
+      <h2 class="sh">Still Stuck Under ₹1 Lakh?<br><em>Here's What's Actually Holding You Back</em></h2>
+      <p class="muted-p" style="margin:0 auto;">It's not the platform. It's not your closing skills. Most of the time, it comes down to one of these five things.</p>
+    </div>
+
+    <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:0;">
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);">
+        <h3 style="font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;">You're depending on platforms you can't control.</h3>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">Instagram reach changes overnight. Group posts get you banned. Bought lead lists give you junk. When your lead source is outside your control, so is your income — and scaling becomes impossible.</p>
+      </div>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);">
+        <h3 style="font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;">Your ad angle is speaking to the wrong person.</h3>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">Most affiliates write ads about their product — not about the buyer's problem. If the first line of your ad doesn't immediately feel personal, the right people keep scrolling and the wrong ones click.</p>
+      </div>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);">
+        <h3 style="font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;">Your landing page or funnel is doing too little.</h3>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">If someone clicks your ad and lands somewhere that doesn't immediately build trust and push them to act — you've already lost them. A weak funnel wastes ad spend faster than anything else.</p>
+      </div>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);">
+        <h3 style="font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;">Warm leads are going cold before you reach them.</h3>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">People who clicked your ad were interested — for about 20 minutes. Without a retargeting system and a fast follow-up flow, those leads move on. The pipeline leaks and you start from scratch each month.</p>
+      </div>
+      <div style="padding:32px 0;">
+        <h3 style="font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;">You're too involved in lead generation to focus on closing.</h3>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">When you're the one posting, running ads, chasing leads, and closing — nothing gets done well. The affiliates crossing ₹1L+ consistently have one thing in common: they've handed off the lead side entirely.</p>
+      </div>
+    </div>
+
+    <!-- Is This For You -->
+    <div style="text-align:center;margin:56px 0 32px;display:flex;flex-direction:column;align-items:center;gap:10px;">
       <span class="label">Is This For You?</span>
-      <h2 class="sh">This Is <em>Exactly For You</em> If…</h2>
+      <h3 class="sh" style="font-size:clamp(1.4rem,3vw,2rem);">Check If You're the <em>Right Fit</em></h3>
     </div>
     <div class="for-grid">
       <div class="for-box yes">
         <h3>✅ This IS For You</h3>
         <ul class="for-list">
-          <li><span class="ico">✓</span> You're an affiliate marketer wanting daily, consistent leads</li>
-          <li><span class="ico">✓</span> You've tried running ads yourself but didn't get results</li>
-          <li><span class="ico">✓</span> You want a professional to handle the ads so you can close</li>
-          <li><span class="ico">✓</span> You're with IDP, Bizgurukul, LeadsGuru, Forever, or similar platforms</li>
-          <li><span class="ico">✓</span> You have a minimum ₹5,000–10,000/month ad budget</li>
-          <li><span class="ico">✓</span> You're serious about scaling your affiliate income this month</li>
+          <li><span class="ico">✓</span> You're already on a platform (IDP, Bizgurukul, LeadsGuru, TruLearnix, Forever etc.) and want daily qualified leads</li>
+          <li><span class="ico">✓</span> You've tried organic content, DMs, or running ads yourself — but results are inconsistent</li>
+          <li><span class="ico">✓</span> You want someone to handle the entire ad setup so you can focus only on closing</li>
+          <li><span class="ico">✓</span> You have at least ₹5,000–10,000/month ready to invest in ads</li>
+          <li><span class="ico">✓</span> You already have some sales and proof — you just need a predictable lead flow</li>
+          <li><span class="ico">✓</span> You're ready to trust the process for at least 10–14 days of testing</li>
         </ul>
       </div>
       <div class="for-box no">
         <h3>❌ This is NOT For You</h3>
         <ul class="for-list">
-          <li><span class="ico">✗</span> You want leads without spending anything on ads</li>
-          <li><span class="ico">✗</span> You're looking for overnight "get rich quick" results</li>
-          <li><span class="ico">✗</span> You're not ready to invest in professional ad management</li>
-          <li><span class="ico">✗</span> You want to run ads yourself and just need "tips"</li>
-          <li><span class="ico">✗</span> You're not affiliated with any recognized platform</li>
-          <li><span class="ico">✗</span> You're unwilling to trust the process for at least 7–10 days</li>
+          <li><span class="ico">✗</span> You have zero sales yet and are still figuring out your product</li>
+          <li><span class="ico">✗</span> You want leads without any ad spend — free only</li>
+          <li><span class="ico">✗</span> You're looking for overnight results or a "magic formula"</li>
+          <li><span class="ico">✗</span> You want tips to run ads yourself — we do it for you, not teach you</li>
+          <li><span class="ico">✗</span> You're not ready to commit even ₹5K/month to your growth</li>
+          <li><span class="ico">✗</span> You want guaranteed income numbers — results depend on your closing too</li>
         </ul>
       </div>
+    </div>
+
+    <div style="text-align:center;margin-top:44px;">
+      <a href="#getstart" class="btn-or" onclick="openModal(event)" style="font-size:.95rem;padding:15px 32px;">
+        Start Getting Qualified Leads →
+      </a>
     </div>
   </div>
 </section>
@@ -589,73 +646,46 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:52px;display:flex;flex-direction:column;align-items:center;gap:14px;">
-      <span class="label">Process</span>
-      <h2 class="sh">How We Get You <em>Daily Leads</em></h2>
+    <div style="text-align:center;margin-bottom:16px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <span class="label">How It Works</span>
+      <h2 class="sh">This Is Exactly<br><em>How We Run Your Campaigns</em></h2>
+      <p class="muted-p" style="margin:0 auto;">From your first WhatsApp message to leads landing in your inbox daily — here's what the process looks like, start to finish.</p>
     </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Fill the Form</h3>
-        <p>Tell us your platform, budget and goals. Takes 60 seconds.</p>
+    <div style="max-width:680px;margin:48px auto 0;display:flex;flex-direction:column;gap:0;">
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);display:flex;gap:24px;align-items:flex-start;">
+        <div style="font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--or);text-transform:uppercase;padding-top:3px;flex-shrink:0;">Step 01</div>
+        <div>
+          <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;">We understand your situation first</h3>
+          <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">You share your platform, current income, ad budget, and what you've already tried. No generic templates — we need to know your exact setup before we touch anything.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Strategy Call</h3>
-        <p>Osama personally reviews your profile and sets up a custom campaign plan.</p>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);display:flex;gap:24px;align-items:flex-start;">
+        <div style="font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--or);text-transform:uppercase;padding-top:3px;flex-shrink:0;">Step 02</div>
+        <div>
+          <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;">We position your offer for cold traffic</h3>
+          <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">Osama personally works on the angle — what to say, to whom, and how to say it so a stranger stops scrolling and wants to know more. This is the foundation everything else is built on.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Ads Go Live</h3>
-        <p>We create the creatives, write the copy, set up targeting — and launch in days.</p>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);display:flex;gap:24px;align-items:flex-start;">
+        <div style="font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--or);text-transform:uppercase;padding-top:3px;flex-shrink:0;">Step 03</div>
+        <div>
+          <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;">Creatives, copy, and funnel — all built and launched</h3>
+          <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">Ad visuals, ad copy, landing page or WhatsApp flow — designed, written, and live within days. You don't create anything. You don't manage anything. We handle it all.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h3>Leads Come In</h3>
-        <p>Daily leads start flowing. We optimize continuously, you focus on closing.</p>
+      <div style="padding:32px 0;border-bottom:1px solid var(--border);display:flex;gap:24px;align-items:flex-start;">
+        <div style="font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--or);text-transform:uppercase;padding-top:3px;flex-shrink:0;">Step 04</div>
+        <div>
+          <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;">Leads start coming in — you focus on closing</h3>
+          <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">First leads typically arrive within 7–10 days. From here, your only job is to show up and close. We track results, send weekly reports, and keep optimizing every week.</p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS / FEATURES -->
-<section id="results">
-  <div class="wrap">
-    <div style="text-align:center;margin-bottom:52px;display:flex;flex-direction:column;align-items:center;gap:14px;">
-      <span class="label">Why Choose Us</span>
-      <h2 class="sh">Everything You Need to<br><em>Scale Your Affiliate Income</em></h2>
-      <p class="muted-p" style="margin:0 auto;">Full-service Meta Ads management — from creatives to conversions.</p>
-    </div>
-    <div class="results-grid">
-      <div class="r-card">
-        <div class="r-icon">🎯</div>
-        <h3>Done-For-You Ads</h3>
-        <p>We handle everything — targeting, creatives, copy, A/B testing, optimization. You just close the leads.</p>
-      </div>
-      <div class="r-card">
-        <div class="r-num"><span class="counter" data-target="700" data-suffix="+">700+</span></div>
-        <h3>Affiliates Served</h3>
-        <p>We know affiliate marketing niches inside out. IDP, Bizgurukul, LeadsGuru, Forever — done it all.</p>
-      </div>
-      <div class="r-card">
-        <div class="r-icon">🎨</div>
-        <h3>Creatives Included</h3>
-        <p>High-converting ad copy and creatives crafted by our team at zero extra cost.</p>
-      </div>
-      <div class="r-card">
-        <div class="r-icon">⚡</div>
-        <h3>Fast Onboarding</h3>
-        <p>Campaigns go live within days. No long setup, no complicated processes.</p>
-      </div>
-      <div class="r-card">
-        <div class="r-icon">💬</div>
-        <h3>WhatsApp Support + 1:1 Session</h3>
-        <p>Direct access to Osama on WhatsApp — quick answers, live sessions when you need them.</p>
-      </div>
-      <div class="r-card">
-        <div class="r-icon">📊</div>
-        <h3>Weekly Reports</h3>
-        <p>Transparent performance reporting every week. Know exactly what's happening with your money.</p>
+      <div style="padding:32px 0;display:flex;gap:24px;align-items:flex-start;">
+        <div style="font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--or);text-transform:uppercase;padding-top:3px;flex-shrink:0;">Step 05</div>
+        <div>
+          <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;">We scale what's working — retargeting, budget, new creatives</h3>
+          <p style="color:var(--muted);font-size:.93rem;line-height:1.7;">Once the campaign is profitable, we scale the budget, retarget warm leads who didn't convert yet, and refresh creatives before they fatigue. More leads, lower cost — compounding results over time.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -669,38 +699,42 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
         <span class="label">FAQ</span>
         <h2>Questions?<br>We've got <em>answers.</em></h2>
         <p>Everything you need to know before getting started with AdDestini.</p>
-        <div style="margin-top:28px;">
-          <a href="#getstart" class="btn-or" onclick="openModal(event)">Get Started →</a>
-        </div>
       </div>
       <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Will this work if I have never run ads before?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-a">Absolutely. You don't need any prior experience with ads. We handle everything from scratch — campaign setup, targeting, creatives, copy, and optimization. Just share your affiliate platform and budget, and we take it from there.</div>
+        </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">
             What's the minimum ad budget required?
             <span class="faq-arrow">▾</span>
           </div>
-          <div class="faq-a">We recommend starting with ₹5,000–₹10,000/month. This gives us enough data to optimize your campaigns and deliver consistent leads.</div>
+          <div class="faq-a">We recommend starting with ₹5,000–₹10,000/month in ad spend. This gives enough data to test, optimize, and find what converts. The more consistent your spend, the faster we scale.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">
-            Do you provide ad creatives and copy?
+            How soon will I start getting leads?
             <span class="faq-arrow">▾</span>
           </div>
-          <div class="faq-a">Yes! Ad copy, creatives, and A/B testing are all included at no extra cost. Our team handles everything so your ads look professional and convert.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            How soon can I expect results?
-            <span class="faq-arrow">▾</span>
-          </div>
-          <div class="faq-a">Most clients start seeing leads within 7–10 days of consistent ad spend. The first week is for data gathering and optimization.</div>
+          <div class="faq-a">Most clients see their first leads within 7–10 days. The first 10–14 days are for testing and finding winning creatives — after that, we scale what's working. We don't promise income numbers, but we commit to execution, testing, and weekly reporting.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">
             What kind of support will I get?
             <span class="faq-arrow">▾</span>
           </div>
-          <div class="faq-a">You get direct WhatsApp access to Osama, 1:1 live sessions when needed, weekly performance reports, and continuous campaign optimization.</div>
+          <div class="faq-a">You get direct WhatsApp access to Osama, weekly performance updates, and 1:1 check-in sessions when needed. Every campaign is managed hands-on — not handed off to a junior. You're never left figuring things out alone.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Which platforms do you work with?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-a">We work with affiliates from IDP, TruLearnix, Bizgurukul, LeadsArk, CareerFIXX, LeadsGuru, MillionaireTrack, MonetizeU, Gyankmao, Starteazy, RichIND, Forever, Vestige, and more. If your platform isn't listed, reach out — we'll let you know if we can help.</div>
         </div>
       </div>
     </div>
@@ -710,50 +744,49 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
 <!-- GETSTART anchor for modal trigger -->
 <div id="getstart"></div>
 
+<!-- FOOTER CTA BAND -->
+<div class="footer-cta-band">
+  <div class="wrap">
+    <h3>Stop running ads that don't convert.<br><span>We build the system. You just close.</span></h3>
+    <a href="#getstart" onclick="openModal(event)">Talk to Osama →</a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
+    <div class="footer-main">
       <div class="footer-brand">
         <div class="footer-brand-logo">Ad<em>Destini</em></div>
-        <p>Professional Meta Ads management for affiliate marketers. Results-driven campaigns, transparent reporting, and dedicated WhatsApp support.</p>
-        <div class="footer-socials">
-          <a href="https://instagram.com/addestiniofficial" target="_blank" title="Instagram">📸</a>
-          <a href="https://wa.me/918726658320" target="_blank" title="WhatsApp">💬</a>
+        <p style="color:#aaa;">AdDestini is a digital marketing agency specializing in paid Meta ad campaigns for affiliate marketers. We help affiliates across India generate consistent, daily leads through targeted Facebook and Instagram advertising. Results vary based on niche, ad budget, and offer quality. This site is not affiliated with Meta Platforms, Inc. or any affiliate network.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><a href="tel:+918726658320">+91 87266 58320</a></p>
+          <p><a href="mailto:info@addestini.com">info@addestini.com</a></p>
+          <p>Siwan, Bihar, India</p>
+          <p><a href="https://instagram.com/addestiniofficial" target="_blank">@addestiniofficial</a></p>
         </div>
-      </div>
-      <div class="footer-col">
-        <h4>Links</h4>
-        <ul>
-          <li><a href="#results">Why Choose Us</a></li>
-          <li><a href="#expert">Meet Osama</a></li>
-          <li><a href="#videos">Client Results</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#getstart" onclick="openModal(event)">Get Started</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>📱 8726658320</p>
-        <p>✉️ <a href="mailto:info@addestini.com" style="color:var(--muted);">info@addestini.com</a></p>
-        <p>📍 Siwan, Bihar, India</p>
-        <p>📸 <a href="https://instagram.com/addestiniofficial" target="_blank" style="color:var(--muted);">@addestiniofficial</a></p>
       </div>
     </div>
     <div class="footer-bar">
-      <p>© 2025 AdDestini. All rights reserved.</p>
-      <p>Powered by AdDestini — Meta Ads Agency</p>
+      <p>© 2026 AdDestini. All rights reserved.</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+        <a href="#" style="font-size:.74rem;color:#888;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms & Conditions</a>
+        <a href="#" style="font-size:.74rem;color:#888;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
+        <a href="#" style="font-size:.74rem;color:#888;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Refund Policy</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <!-- STICKY CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <span class="sticky-cta-txt"><strong>Ready to get daily leads?</strong> Join 700+ affiliates.</span>
+  <span class="sticky-cta-txt"><strong>Stop chasing leads manually.</strong> Let ads do it for you.</span>
   <a href="#getstart" class="sticky-cta-btn" onclick="openModal(event)">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Get Started Free
+    Talk to Osama →
   </a>
 </div>
 <a href="#" class="scroll-top" id="scrollTop" aria-label="Back to top">↑</a>
@@ -816,7 +849,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 0 2
     </div>
     <button class="btn-or btn-send" onclick="sendModalForm()">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Send on WhatsApp — It's Free
+      Send on WhatsApp
     </button>
     <p class="form-note">🔒 Your info goes straight to Osama. Zero spam.</p>
   </div>
