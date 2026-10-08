@@ -6,7 +6,7 @@
 <title>AdDestini — Meta Ads for Affiliate Marketers</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -450,7 +450,7 @@ footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:28p
 
       <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">👇 Watch this full video to understand our strategy</p>
       <div class="hero-yt">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="AdDestini Introduction" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/BbL9JYA1Qrw?rel=0&modestbranding=1&playsinline=1" title="AdDestini Introduction" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
       </div>
 
       <div class="hero-btns" style="margin-top:32px;">
@@ -482,16 +482,16 @@ footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:28p
     </div>
     <div class="vid-grid">
       <div class="vid-item">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="Client Result 1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/5Ya3mw3PHhc?rel=0&modestbranding=1&playsinline=1" title="Client Result 1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="vid-item">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="Client Result 2" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/_fDck7uSnfE?rel=0&modestbranding=1&playsinline=1" title="Client Result 2" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="vid-item">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="Client Result 3" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/OnAnpbQOaEg?rel=0&modestbranding=1&playsinline=1" title="Client Result 3" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="vid-item">
-        <iframe src="https://www.youtube.com/embed/ZScOhIsWRmo?rel=0&modestbranding=1&playsinline=1" title="Client Result 4" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3nM5N9FhoIQ?rel=0&modestbranding=1&playsinline=1" title="Client Result 4" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -867,9 +867,9 @@ footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:28p
       <input type="text" id="m-earning" placeholder="Your current monthly earning">
     </div>
     <button class="btn-or btn-send" onclick="sendModalForm()">
-      Pay ₹1 &amp; Connect on WhatsApp
+      Connect on WhatsApp
     </button>
-    <p class="form-note">🔒 ₹1 payment filters serious leads only. Your info goes straight to Osama.</p>
+    <p class="form-note">🔒 Your info goes straight to Osama. He'll connect with you on WhatsApp.</p>
   </div>
 </div>
 
@@ -914,40 +914,23 @@ function sendModalForm(){
   const profession=document.getElementById('m-profession').value;
   const earning=document.getElementById('m-earning').value.trim();
   if(!name||!platform||!phone||!profession){
-    showModalStatus('❌ Name, Platform, Phone aur Profession required hain.','#ff5555','#1a0808');return;
+    showModalStatus('❌ Please fill Name, Platform, Phone and Profession.','#ff5555','#1a0808');return;
   }
-  if(phone.length!==10){showModalStatus('❌ Phone number exactly 10 digits ka hona chahiye.','#ff5555','#1a0808');return;}
+  if(phone.length!==10){showModalStatus('❌ Phone number must be exactly 10 digits.','#ff5555','#1a0808');return;}
 
-  const options={
-    key:'rzp_live_TlQmdOKwwFJ9DY',
-    amount:100,
-    currency:'INR',
-    name:'Ad Destini',
-    description:'Connect with Osama on WhatsApp',
-    image:'',
-    prefill:{name:name,contact:'+91'+phone},
-    theme:{color:'#ff4500'},
-    handler:function(response){
-      // Payment successful — now open WhatsApp & log to sheet
-      const msg=encodeURIComponent(`Hello Osama sir,\nI am interested in your ad service. My details:\n\n👤 *Name:* ${name}\n📋 *Platform:* ${platform}\n📱 *Phone:* ${phone}\n💼 *Profession:* ${profession}${earning?'\n💰 *Total Earning:* '+earning:''}\n💳 *Payment ID:* ${response.razorpay_payment_id}\n\nPlease share me details and next steps.`);
-      window.open(`https://wa.me/${WA_NUM}?text=${msg}`,'_blank');
-      if(typeof fbq!=='undefined')fbq('track','Lead');
-      if(SHEET_URL){
-        try{
-          const fd=new FormData();
-          fd.append('timestamp',new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}));
-          fd.append('name',name);fd.append('phone',phone);fd.append('platform',platform);
-          fd.append('profession',profession);fd.append('earning',earning||'—');
-          fd.append('payment_id',response.razorpay_payment_id);
-          fetch(SHEET_URL,{method:'POST',body:fd});
-        }catch(e){}
-      }
-      showModalStatus('✅ Payment successful! WhatsApp opened.','#22c55e','#0a1a0a');
-    },
-    modal:{ondismiss:function(){showModalStatus('Payment cancelled. Try again.','#ff5555','#1a0808');}}
-  };
-  const rzp=new Razorpay(options);
-  rzp.open();
+  const msg=encodeURIComponent(`Hello Osama sir,\nI am interested in your ad service. My details:\n\n👤 *Name:* ${name}\n📋 *Platform:* ${platform}\n📱 *Phone:* ${phone}\n💼 *Profession:* ${profession}${earning?'\n💰 *Total Earning:* '+earning:''}\n\nPlease share me details and next steps.`);
+  window.open(`https://wa.me/${WA_NUM}?text=${msg}`,'_blank');
+  if(typeof fbq!=='undefined')fbq('track','Lead');
+  if(SHEET_URL){
+    try{
+      const fd=new FormData();
+      fd.append('timestamp',new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}));
+      fd.append('name',name);fd.append('phone',phone);fd.append('platform',platform);
+      fd.append('profession',profession);fd.append('earning',earning||'—');
+      fetch(SHEET_URL,{method:'POST',body:fd});
+    }catch(e){}
+  }
+  showModalStatus('✅ WhatsApp opened! Connect with Osama now.','#22c55e','#0a1a0a');
 }
 
 function showModalStatus(msg,color,bg){
