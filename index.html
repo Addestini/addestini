@@ -124,8 +124,15 @@ nav.scrolled{background:rgba(5,5,5,.95);backdrop-filter:blur(24px);border-bottom
 
 /* Hero YT — landscape intro */
 .hero-yt{width:100%;max-width:680px;margin-top:28px;border-radius:16px;overflow:hidden;
-  border:1px solid var(--border2);aspect-ratio:16/9;}
+  border:1px solid var(--border2);aspect-ratio:16/9;position:relative;cursor:pointer;background:#000;}
 .hero-yt iframe{width:100%;height:100%;border:none;display:block;}
+.yt-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:72px;height:72px;background:rgba(255,69,0,.92);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;
+  box-shadow:0 4px 24px rgba(255,69,0,.5);}
+.hero-yt:hover .yt-play{transform:translate(-50%,-50%) scale(1.1);background:#ff4500;}
+.yt-play svg{margin-left:5px;}
 
 /* ── MARQUEE ── */
 .marquee-section{padding:22px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);}
@@ -440,8 +447,7 @@ footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:28p
           <div class="m-pill">GyaanGrowth</div><div class="m-pill">RichIND</div>
           <div class="m-pill">Forever</div><div class="m-pill">Vestige</div>
           <div class="m-pill">LeadsArk</div><div class="m-pill">CareerFIXX</div>
-          <div class="m-pill">TruLearnix
-          </div><div class="m-pill">Starteazy</div>
+          <div class="m-pill">TruLearnix</div><div class="m-pill">Starteazy</div>
         </div>
       </div>
 
@@ -450,8 +456,11 @@ footer{background:#080808;border-top:1px solid rgba(255,255,255,.05);padding:28p
       </h1>
 
       <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">👇 Watch this full video to understand our strategy</p>
-      <div class="hero-yt">
-        <iframe src="https://www.youtube.com/embed/BbL9JYA1Qrw?rel=0&modestbranding=1&playsinline=1" title="AdDestini Introduction" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      <div class="hero-yt" id="heroYT" onclick="loadHeroVideo()">
+        <img class="yt-thumb" src="https://img.youtube.com/vi/j8SD2LizaPg/maxresdefault.jpg" alt="AdDestini Introduction" loading="lazy">
+        <div class="yt-play">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </div>
       </div>
 
       <div class="hero-btns" style="margin-top:32px;">
@@ -896,6 +905,11 @@ function openModal(e){
 function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow='';
+}
+function loadHeroVideo(){
+  const el=document.getElementById('heroYT');
+  el.innerHTML='<iframe src="https://www.youtube.com/embed/j8SD2LizaPg?rel=0&modestbranding=1&playsinline=1&autoplay=1" title="AdDestini Introduction" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+  el.style.cursor='default';
 }
 function handleOverlayClick(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
